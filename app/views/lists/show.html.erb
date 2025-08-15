@@ -1,6 +1,13 @@
-<div class="container">
-  <h1><%= @list.name %></h1>
-  <%= link_to "back to lists", lists_path %>
+<div class="container block bg-info mx-auto rounded-5 mt-5 shadow">
+  <div class="justify-content-center d-flex">
+    <h1 class="mt-5 ms-5 me-4"><%= @list.name %></h1>
+    <%= link_to list_path(@list), { data: { turbo_method: :delete, turbo_confirm: 'You sure you want to delete your list?' }} do %>
+      <i class="fa-solid fa-trash flex-column pt-3 mt-5"></i>
+    <% end %>
+  </div>
+  <%= link_to lists_path do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
   <% @list.bookmarks.each do |bookmark| %>
     <div class="card-product my-2">
       <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title %>
@@ -16,12 +23,7 @@
       </div>
     </div>
   <% end %>
-  <p class="text-center">
+  <p class="text-center mt-5">
     <%= link_to new_list_bookmark_path(@list) do %><i class="fa-solid fa-circle-plus"></i><% end %>
-  </p>
-  <p class="text-center">
-    <%= link_to list_path(@list), { data: { turbo_method: :delete, turbo_confirm: 'You sure you want to delete your list?' }} do %>
-      <i class="fa-solid fa-trash"></i>
-    <% end %>
   </p>
 </div>

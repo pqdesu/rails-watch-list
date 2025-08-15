@@ -1,19 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://image.pollinations.ai/prompt/movie-theater-with-popcorn-banner);">
-  <div class="container">
-    <h1>My Movie list!</h1>
+<div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_url "movie-theater.png" %>);">
+    <div class="container">
+      <h1>My Movie list!</h1>
+    </div>
   </div>
-</div>
-<div class="container mt-3">
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <%= link_to list_path(list) do  %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://image.pollinations.ai/prompt/<%= list.name %>-movie);">
-          <%= list.name %>
-        </div>
+  <div class="container mt-5">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <%= link_to list_path(list) do  %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= url_for(list.photo) %>');">
+            <%= list.name %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-    <p class="text-center">
-      <%= link_to new_list_path(@list) do %><i class="fa-solid fa-circle-plus m-5 p-5"></i><% end %>
-    </p>
+      <p class="text-center">
+        <%= link_to new_list_path(@list) do %><i class="fa-solid fa-circle-plus mt-4 p-5"></i><% end %>
+      </p>
+    </div>
   </div>
 </div>

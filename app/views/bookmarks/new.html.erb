@@ -1,6 +1,10 @@
-<h1>Create a bookmark for <%= @list.name %> movie list</h1>
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :movie_id, collection: Movie.all %>
-  <%= f.input :comment %>
-  <%= f.submit %>
-<% end %>
+<div class="bg-info container rounded-5 shadow card mt-5 block">
+  <h1 class="text-center mt-3">Create a bookmark for <%= @list.name %> movie list</h1>
+  <div class="container">
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.input :movie_id, collection: Movie.all %>
+      <%= f.input :comment %>
+      <%= f.button :submit , class: 'btn btn-secondary rounded-5 mt-3 mb-3' %>
+    <% end %>
+  </div>
+</div>
